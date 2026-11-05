@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DroidDeck</string>
+    <string name="app_name">Desktop-Droid</string>
     <string-array name="loading_hints">
         <item>First run downloads Steam. This may take a few minutes.</item>
         <item>By default, leaving the app pauses Steam; it picks up where it left off when you come back.</item>
@@ -969,7 +969,9 @@
     <string name="content_open_desktop">Open desktop</string>
     <string name="content_install_open_desktop">Install &amp; open desktop</string>
     <string name="content_linux_desktop">Linux desktop</string>
-    <string name="content_linux_desktop_hint">KDE Plasma, Firefox and your emulators</string>
+    <string name="content_linux_desktop_hint">KDE Plasma, Firefox and Linux applications</string>
+    <string name="content_open_windows_apps">Steam · Windows apps</string>
+    <string name="content_windows_apps_hint">Open Steam in desktop mode, add the .exe as a non-Steam game, then choose Proton.</string>
     <string name="games_empty">Games you install in Steam show up here after the session.</string>
     <string name="games_play_steam">Play Steam</string>
     <string name="games_launch_settings">Launch settings</string>

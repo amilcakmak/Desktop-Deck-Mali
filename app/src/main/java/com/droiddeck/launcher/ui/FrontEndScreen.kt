@@ -372,7 +372,7 @@ fun FrontEndScreen(s: FrontEndState, a: FrontEndActions, page: (@Composable () -
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun FrontEndScreenBody(s: FrontEndState, a: FrontEndActions, page: (@Composable () -> Unit)?, frontFocus: FrontFocus) {
-    var selected by rememberSaveable { mutableStateOf(if (s.shortcutPicker) "games" else "steam") }
+    var selected by rememberSaveable { mutableStateOf(if (s.shortcutPicker) "games" else "desktop") }
     LaunchedEffect(s.shortcutPicker) { if (s.shortcutPicker) selected = "games" }
     LaunchedEffect(s.navigate) {
         val target = s.navigate ?: return@LaunchedEffect
@@ -413,13 +413,13 @@ private fun FrontEndScreenBody(s: FrontEndState, a: FrontEndActions, page: (@Com
     ) {
         selected = if (selected.startsWith("rom:")) "emu:" + selected.removePrefix("rom:").substringBefore(':') else "desktop"
     }
-    LaunchedEffect(s.isHomeApp) { if (!s.isHomeApp && selected == "android-apps") selected = "steam" }
+    LaunchedEffect(s.isHomeApp) { if (!s.isHomeApp && selected == "android-apps") selected = "desktop" }
     // The Store turned off in Setup takes its page with it; so does Stores.
-    LaunchedEffect(s.storeEnabled) { if (!s.storeEnabled && selected == "store") selected = "steam" }
-    LaunchedEffect(s.gameStoresEnabled) { if (!s.gameStoresEnabled && selected == "stores") selected = "games" }
+    LaunchedEffect(s.storeEnabled) { if (!s.storeEnabled && selected == "store") selected = "desktop" }
+    LaunchedEffect(s.gameStoresEnabled) { if (!s.gameStoresEnabled && selected == "stores") selected = "desktop" }
     // The last game uninstalled leaves the Games tab on its empty state.
     LaunchedEffect(s.steamGames.isEmpty()) {
-        if (s.steamGames.isEmpty() && selected.startsWith("app:")) selected = "games"
+        if (s.steamGames.isEmpty() && selected.startsWith("app:")) selected = "desktop"
     }
     remember { Motion.refresh(ctx); true }
 

@@ -580,7 +580,7 @@ class MainActivity : ComponentActivity() {
                         desktopInstalled = desktopInstalled,
                         offlineAccount = offlineAccount, offline = offline,
                         frameGenLabel = frameGenLabel, romsDir = romsDir, logsEnabled = logsEnabled, agentCommands = agentCommands,
-                        steamGames = steamGames, emulators = emulatorList, running = runningLabel,
+                        steamGames = steamGames, emulators = emptyList(), running = runningLabel,
                         frameGen = FrameGen.mode(this),
                         lossless = lossless,
                         pageKey = sm?.let { "settings:$it" } ?: if (showPerformance) "performance" else if (showProtons) "protons" else if (showComponents) "components" else if (showMapping) "controller-mapping" else null,

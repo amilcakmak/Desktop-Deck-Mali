@@ -3,7 +3,7 @@
 # certain names. Each is its own app to Android - installs beside the others, with its own data.
 #
 # name      package                      file suffix
-standard    com.droiddeck.launcher       -
+standard    com.desktopdroid.launcher    -
 pubg        com.tencent.ig               -pubg
 antutu      com.antutu.benchmark.full    -antutu
 ludashi     com.ludashi.benchmark        -ludashi

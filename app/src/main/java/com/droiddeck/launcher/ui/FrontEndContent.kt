@@ -428,6 +428,7 @@ private fun DesktopCard(s: FrontEndState, a: FrontEndActions) {
         Actions {
             // Enabled without a runtime or the desktop: the session's loading screen installs them first.
             PrimaryButton(if (s.desktopInstalled) stringResource(R.string.content_open_desktop) else stringResource(R.string.content_install_open_desktop), enabled = !s.busy, main = true, onClick = a.onDesktop)
+            SecondaryButton(stringResource(R.string.content_open_windows_apps), enabled = !s.busy, onClick = a.onPlayDesktopUi)
             Cog(onClick = a.onDesktopSettings)
             BusyChip(s)
         }
@@ -448,6 +449,7 @@ private fun DesktopCard(s: FrontEndState, a: FrontEndActions) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(stringResource(R.string.content_linux_desktop), fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = colors.onBackground)
                     Text(stringResource(R.string.content_linux_desktop_hint), fontSize = 14.sp, color = colors.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                    Text(stringResource(R.string.content_windows_apps_hint), fontSize = 13.sp, color = colors.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 }
                 if (!narrow) actions()
             }

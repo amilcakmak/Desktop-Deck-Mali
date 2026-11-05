@@ -41,15 +41,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.DesktopWindows
 import androidx.compose.material.icons.outlined.Layers
-import androidx.compose.material.icons.outlined.LocalMall
-import androidx.compose.material.icons.outlined.SportsEsports
-import androidx.compose.material.icons.outlined.Storefront
 import androidx.compose.material.icons.outlined.SystemUpdate
 import androidx.compose.material.icons.outlined.Tune
-import androidx.compose.material.icons.outlined.VideoLibrary
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -103,7 +98,7 @@ internal fun SideRail(
         modifier = modifier.width(if (iconOnly) 64.dp else 92.dp).background(colors.surface).padding(vertical = if (compact) 8.dp else 12.dp),
     ) {
         // Every section on screen at once: items shrink (to 44dp, still a touch target) before the rail scrolls.
-        val count = 6 + (if (s.storeEnabled) 1 else 0) + (if (s.gameStoresEnabled) 1 else 0) + (if (s.isHomeApp) 1 else 0)
+        val count = 4
         BoxWithConstraints(Modifier.weight(1f).fillMaxWidth()) {
         val fit = (maxHeight / count - 4.dp).coerceIn(44.dp, if (iconOnly) 48.dp else if (compact) 52.dp else 60.dp)
         Column(
@@ -111,17 +106,8 @@ internal fun SideRail(
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
         ) {
-            RailItem(stringResource(R.string.rail_steam), Icons.Outlined.SportsEsports, "steam", selected == "steam", compact, iconOnly, fit, onFocus = { onFocusSelect("steam") }) { onSelect("steam") }
-            // Always there, so the items below it never move; an empty library says how to fill it.
-            RailItem(stringResource(R.string.rail_games), Icons.Outlined.VideoLibrary, "games", selected == "games", compact, iconOnly, fit, onFocus = { onFocusSelect("games") }) { onSelect("games") }
-            // The game stores, right under Games: what they install lands there. Its badge counts
-            // the downloads in flight, so a download started here is never out of sight.
-            if (s.gameStoresEnabled) RailItem(stringResource(R.string.rail_stores), Icons.Outlined.LocalMall, "stores", selected == "stores", compact, iconOnly, fit, count = s.storeDownloadsActive, onFocus = { onFocusSelect("stores") }) { onSelect("stores") }
             RailItem(stringResource(R.string.rail_desktop), Icons.Outlined.DesktopWindows, "desktop", selected == "desktop", compact, iconOnly, fit, onFocus = { onFocusSelect("desktop") }) { onSelect("desktop") }
-            if (s.storeEnabled) RailItem(stringResource(R.string.rail_store), Icons.Outlined.Storefront, "store", selected == "store", compact, iconOnly, fit, onFocus = { onFocusSelect("store") }) { onSelect("store") }
             RailItem(stringResource(R.string.rail_components), Icons.Outlined.Layers, "components", selected == "components", compact, iconOnly, fit, onFocus = { onFocusSelect("components") }) { onSelect("components") }
-            // Home mode's extra section goes last, so it shifts nothing above it.
-            if (s.isHomeApp) RailItem(stringResource(R.string.rail_apps), Icons.Outlined.Apps, "android-apps", selected == "android-apps", compact, iconOnly, fit, onFocus = { onFocusSelect("android-apps") }) { onSelect("android-apps") }
             RailItem(stringResource(R.string.rail_setup), Icons.Outlined.Tune, "setup", selected == "setup", compact, iconOnly, fit, badge = setupNeedsAttention, onFocus = { onFocusSelect("setup") }) { onSelect("setup") }
             RailItem(stringResource(R.string.rail_updates), Icons.Outlined.SystemUpdate, "updates", selected == "updates", compact, iconOnly, fit, badge = s.updates.hasUpdate, onFocus = { onFocusSelect("updates") }) { onSelect("updates") }
         }

@@ -1,0 +1,4 @@
+tools/linuxfs/overlay/usr/local/bin/droiddeck-* text eol=lf
+tools/linuxfs/overlay/usr/local/bin/steam-compatibility text eol=lf
+tools/linuxfs/overlay/usr/bin/** text eol=lf
+tools/linuxfs/desktop/* text eol=lf
